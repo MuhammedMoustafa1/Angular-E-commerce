@@ -22,6 +22,8 @@
     <button type="button" class="btn btn-primary" (click)="chageCat()">
       change Category
     </button>
+    <br>
+    Orders's Date: {{orderDate | date: 'longDate'}}
   </div>
 
   <table class="table">
@@ -30,7 +32,8 @@
         <th scope="col">No.</th>
         <th scope="col">Name</th>
         <th scope="col">Image</th>
-        <th scope="col">Price</th>
+        <th scope="col">Price in USD</th>
+        <th scope="col">Price in EGP</th>
         <th scope="col">AV. Quantity</th>
         <th>Count</th>
         <th>BUY</th>
@@ -73,7 +76,8 @@
         <!-- <td><img [LightBox]="ReadFromPropInTs" [src]="prd?.imageURL" alt="prdImage" /></td> -->
               <td><img LightBox="green" defaultColor="gray" [src]="prd?.imageURL" alt="prdImage" /></td>
 
-        <td>{{ prd?.price }}</td>
+        <td>{{ prd?.price | currency: "EUR": 'symbol' }}</td>
+        <td>{{ prd.price | USDtoEGP: 50 | currency:'EGP': 'code' }}</td>
         <td>
           <!-- <div *ngIf="prd.quantity!=0">{{ prd?.quantity }}</div>
           <div *ngIf="prd.quantity==0">Out of Stock</div> -->

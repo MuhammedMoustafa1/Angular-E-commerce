@@ -12,6 +12,7 @@ export class ProductlistComponent {
   prdList:IProduct[];
   selectedCatID:number=0;
   orderTotalPrice:number=0;
+  orderDate:Date;
   constructor(){
     this.catList = [
       {
@@ -32,7 +33,7 @@ export class ProductlistComponent {
       {
         id:100,
         name:"Product 1",
-        price:100,
+        price:1000000,
         quantity:1,
         imageURL:'https://fakeimg.pl/200x100/',
         categoryID:1
@@ -40,7 +41,7 @@ export class ProductlistComponent {
       {
         id:200,
         name:"Product 2",
-        price:200,
+        price:2005454,
         quantity:0,
         imageURL:'https://fakeimg.pl/200x100/',
         categoryID:1
@@ -48,15 +49,15 @@ export class ProductlistComponent {
       {
         id:300,
         name:"Product 3",
-        price:300,
-        quantity:10,
+        price:3000000,
+        quantity:40.5,
         imageURL:'https://fakeimg.pl/200x100/',
         categoryID:2
       },
       {
         id:400,
         name:"Product 4",
-        price:400,
+        price:400000,
         quantity:2,
         imageURL:'https://fakeimg.pl/200x100/',
         categoryID:2
@@ -64,7 +65,7 @@ export class ProductlistComponent {
       {
         id:500,
         name:"Product 5",
-        price:500,
+        price:5009222,
         quantity:0,
         imageURL:'https://fakeimg.pl/200x100/',
         categoryID:3
@@ -78,6 +79,7 @@ export class ProductlistComponent {
         categoryID:3
       }
     ];
+    this.orderDate=new Date();
   }
   prdTrackByFn(index:number,prd:IProduct):number
   {
