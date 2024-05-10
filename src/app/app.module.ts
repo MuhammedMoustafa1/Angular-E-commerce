@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { LightBoxDirective } from './Directives/light-box.directive';
 import { USDtoEGPPipe } from './Pipes/usdto-egp.pipe';
 import { OrderMasterComponent } from './Components/Order/order-master/order-master.component';
+import { StaticProductsService } from './Services/static-products.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { OrderMasterComponent } from './Components/Order/order-master/order-mast
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    //StaticProductsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
