@@ -13,8 +13,11 @@
   </select>
 </div>
 <div class="bg-warning">
-  <app-productlist [sentCatID]="selectedCatID"></app-productlist>
+  <app-productlist [sentCatID]="selectedCatID" (totalPriceChanged)="onTotalPriceChanged($event)"></app-productlist>
 </div>
-
+<div>
+  <h3>Enter Your name</h3>
+  <input type="text" #clientNameInp class="form-control">
+</div>
 <hr>
-<h3>order total price: {{orderTotalPrice}}</h3>
+<h3>order total price: {{recivedOrderTotalPrice}}</h3>

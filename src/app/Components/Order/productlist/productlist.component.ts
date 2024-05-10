@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ICategory } from 'src/app/Models/icategory';
 import { IProduct } from 'src/app/Models/iproduct';
 
@@ -12,10 +12,11 @@ export class ProductlistComponent implements OnInit, OnChanges {
   prdList: IProduct[];
   prdListOfCat:IProduct[]=[];
   @Input() sentCatID: number = 0;
+  @Output() totalPriceChanged:EventEmitter<number>;
   orderTotalPrice: number = 0;
   orderDate: Date;
   constructor() {
-
+    this.totalPriceChanged=new EventEmitter<number>();
 
     this.prdList = [
       {
@@ -81,7 +82,8 @@ export class ProductlistComponent implements OnInit, OnChanges {
     // this.orderTotalPrice= parseInt(count)*prdPrice;
     //this.orderTotalPrice= Number(count)*prdPrice;
     //this.orderTotalPrice = (count as number)*prdPrice;
-    this.orderTotalPrice = +count * prdPrice;
+    this.orderTotalPrice += +count * prdPrice;
+    this.totalPriceChanged.emit(this.orderTotalPrice);
   }
   filterProductsByCatID() {
     if (this.sentCatID==0)
