@@ -1,22 +1,5 @@
 <div class="table-responsive">
-  <div class="mb-3">
-    <label for="" class="form-label">Category:</label>
-    <!-- <select #cat class="form-select form-select-lg"
-      name="cat" id="prdCat " (change)="getSelCat(cat.value)"> -->
-    <!-- <select  class="form-select form-select-lg" name="cat" id="prdCat " (change)="getSelCat($event)">  in ts:: event.target.value-->
-    <select
-      class="form-select form-select-lg"
-      name="cat"
-      id="prdCat"
-      [(ngModel)]="selectedCatID"
-    >
-      <!-- property binding -->
-      <option *ngFor="let cat of catList" [value]="cat.id">
-        {{ cat.name }}
-      </option>
-    </select>
-  </div>
-  <div class="text-secondary">
+  <!-- <div class="text-secondary">
     [To be Removed] For Test:
     {{ selectedCatID }}
     <button type="button" class="btn btn-primary" (click)="chageCat()">
@@ -24,7 +7,7 @@
     </button>
     <br>
     Orders's Date: {{orderDate | date: 'longDate'}}
-  </div>
+  </div> -->
 
   <table class="table">
     <thead>
@@ -62,9 +45,9 @@
         safe navigation operator
         <tr *ngIf="prd.quantity != 0"> -->
       <!-- <tr *ngFor="let prd of prdList; let i = index" [class.bg-warning]="prd.quantity==0"> -->
-        <!-- <tr *ngFor="let prd of prdList; let i = index" [ngClass]="{'bg-warning':prd.quantity==0,'text-primary':prd.quantity==0}"> -->
+      <!-- <tr *ngFor="let prd of prdList; let i = index" [ngClass]="{'bg-warning':prd.quantity==0,'text-primary':prd.quantity==0}"> -->
 
-          <tr *ngFor="let prd of prdList; let i = index"
+      <tr *ngFor="let prd of prdListOfCat; let i = index"
         [ngStyle]="{'background-color':prd.quantity==0?'red' : 'yellow','color':prd.quantity==0 ? 'green':'black'}">
 
         <!-- safe navigation operator -->
@@ -74,7 +57,7 @@
         <!-- <td><img LightBox highLightColor="green" [src]="prd?.imageURL" alt="prdImage" /></td> -->
         <!-- <td><img LightBox="green" [src]="prd?.imageURL" alt="prdImage" /></td> -->
         <!-- <td><img [LightBox]="ReadFromPropInTs" [src]="prd?.imageURL" alt="prdImage" /></td> -->
-              <td><img LightBox="green" defaultColor="yellow" [src]="prd?.imageURL" alt="prdImage" /></td>
+        <td><img LightBox="green" defaultColor="yellow" [src]="prd?.imageURL" alt="prdImage" /></td>
 
         <td>{{ prd?.price | currency: "EUR": 'symbol' }}</td>
         <td>{{ prd.price | USDtoEGP: 50 | currency:'EGP': 'code' }}</td>
@@ -95,11 +78,7 @@
         <!-- template variable -->
         <td><input #itemsCount type="number" class="form-control" /></td>
         <td>
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="buy(prd.price, itemsCount.value)"
-          >
+          <button type="button" class="btn btn-primary" (click)="buy(prd.price, itemsCount.value)">
             Buy
           </button>
         </td>
@@ -108,6 +87,7 @@
   </table>
   <hr />
   <div class="alert alert-success" role="alert">
+    [To be removed] For Test: <br>
     Order Total price: {{ orderTotalPrice }}
   </div>
 </div>
